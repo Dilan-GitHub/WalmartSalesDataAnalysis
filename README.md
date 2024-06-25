@@ -79,16 +79,16 @@ The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition]
 
 1. How many unique product lines does the data have?
 2. What is the most common payment method?
-3. What is the most selling product line?
-4. What is the total revenue by month?
-5. What month had the largest COGS?
-6. What product line had the largest revenue?
+3. What is the most common product line?
+4. What is the total number of sales transactions per month?
+5. What is the total revenue by month?
+6. What month had the largest COGS?
+7. What product line had the largest revenue?
 5. What is the city with the largest revenue?
-6. What product line had the largest VAT?
-7. Fetch each product line and add a column to those product line showing "Good", "Bad". Good if its greater than average sales
-8. Which branch sold more products than average product sold?
-9. What is the most common product line by gender?
-12. What is the average rating of each product line?
+6. What was the average tax for each product line?
+7. Which branch sold more products than average product sold?
+8. What is the most common product line by gender?
+9. What is the average rating of each product line?
 
 ### Sales
 
@@ -103,12 +103,13 @@ The dataset was obtained from the [Kaggle Walmart Sales Forecasting Competition]
 2. How many unique payment methods does the data have?
 3. What is the most common customer type?
 4. Which customer type buys the most?
-5. What is the gender of most of the customers?
+5. What is the gender count of customers?
 6. What is the gender distribution per branch?
-7. Which time of the day do customers give most ratings?
-8. Which time of the day do customers give most ratings per branch?
-9. Which day fo the week has the best avg ratings?
-10. Which day of the week has the best average ratings per branch?
+7. At what part of the day do customers give the highest rating?
+8. At what part of the day do customers give the highest ratings for each branch?
+9. Which day of the week has the highest average rating?
+10. Which day of the week has the most profit?
+
 
 
 ## Revenue And Profit Calculations
@@ -144,30 +145,4 @@ $ \text{Gross Margin Percentage} = \frac{\text{gross income}}{\text{total revenu
 
 ## Code
 
-For the rest of the code, check the [SQL_queries.sql](https://github.com/Princekrampah/WalmartSalesAnalysis/blob/master/SQL_queries.sql) file
 
-```sql
--- Create database
-CREATE DATABASE IF NOT EXISTS walmartSales;
-
--- Create table
-CREATE TABLE IF NOT EXISTS sales(
-	invoice_id VARCHAR(30) NOT NULL PRIMARY KEY,
-    branch VARCHAR(5) NOT NULL,
-    city VARCHAR(30) NOT NULL,
-    customer_type VARCHAR(30) NOT NULL,
-    gender VARCHAR(30) NOT NULL,
-    product_line VARCHAR(100) NOT NULL,
-    unit_price DECIMAL(10,2) NOT NULL,
-    quantity INT NOT NULL,
-    tax_pct FLOAT(6,4) NOT NULL,
-    total DECIMAL(12, 4) NOT NULL,
-    date DATETIME NOT NULL,
-    time TIME NOT NULL,
-    payment VARCHAR(15) NOT NULL,
-    cogs DECIMAL(10,2) NOT NULL,
-    gross_margin_pct FLOAT(11,9),
-    gross_income DECIMAL(12, 4),
-    rating FLOAT(2, 1)
-);
-```
